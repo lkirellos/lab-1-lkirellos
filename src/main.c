@@ -20,6 +20,7 @@ const char* username = "osalama01";
 
 #include "stm32f0xx.h"
 #include <stdint.h>
+//#include "stm32f4xx_hal.h"
 
 void initb();
 void initc();
@@ -113,14 +114,7 @@ void initc() {
  * @param val    : Pin value, if 0 then the
  *                 pin is set low, else set high
  */
-// void setn(int32_t pin_num, int32_t val) {
-//   if (val == 0) {
-//     GPIOB -> BRR = (1<< pin_num);
-//   }
-//   else {
-//     GPIOB -> BSRR = (1 << pin_num);
-//   }
-// }
+
 
 void setn(int32_t pin_num, int32_t val) {
     if (val == 0) {
@@ -157,27 +151,7 @@ int32_t readpin(int32_t pin_num) {
  *        Use PB4 value for PB9
  *
  */
-// void buttons(void) {
-//       // Read button input at PB0
-//     uint32_t pb0_state = GPIOB->IDR & GPIO_IDR_0;
-//     // Put the PB0 value as output for PB8
-//     if (pb0_state) {
-//         GPIOB->ODR |= GPIO_ODR_8;  // Turn on LED at PB8
-//     } else {
-//         GPIOB->ODR &= ~GPIO_ODR_8;  // Turn off LED at PB8
-//     }
 
-//     // Read button input at PB4
-//     uint32_t pb4_state = GPIOB->IDR & GPIO_IDR_4;
-    
-//     if (pb4_state) {
-//         GPIOB->ODR |= GPIO_ODR_9;  // Turn on LED at PB9
-//     } else {
-//         GPIOB->ODR &= ~GPIO_ODR_9;  // Turn off LED at PB9
-//     }
-
-  
-// }
 
 void buttons(void) {
     // Read button input at PB0
@@ -196,26 +170,7 @@ void buttons(void) {
  * @brief Control LEDs with keypad
  * 
  */
-// void keypad(void) {
-//   for (int i = 0; i < 4; i++) {
-//         // Set the ith column to be 1 using GPIOC->ODR
-//         GPIOC->ODR = (1 << (i + 4));  // PC4-PC7 are columns
 
-        
-//         //nano_wait(1000000);
-
-        
-//         uint32_t row_input = GPIOC->IDR & 0xF;
-
-        
-//         if (row_input & (1 << i)) {
-//             GPIOB->ODR |= (1 << (i + 8));  // Turn on corresponding LED
-//         } else {
-//             GPIOB->ODR &= ~(1 << (i + 8));  // Turn off corresponding LED
-//         }
-//     }
-//     return;
-// }
 
 void keypad(void) {
     for (int i = 0; i < 4; i++) {
